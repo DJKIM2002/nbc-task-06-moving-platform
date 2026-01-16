@@ -12,7 +12,6 @@ class NBC_TASK_06_API ACarpet : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ACarpet();
 
 protected:
@@ -47,7 +46,12 @@ protected:
 	bool bMovingToEnd;
 
 	virtual void BeginPlay() override;
+
+public:
 	virtual void Tick(float DeltaTime) override;
+	
+	// Setter 함수
+	FORCEINLINE void SetMoveSpeed(float NewSpeed) { MoveSpeed = NewSpeed; }
 
 private:
 	FVector WorldStartLocation;

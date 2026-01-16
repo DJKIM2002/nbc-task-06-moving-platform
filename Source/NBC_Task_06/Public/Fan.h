@@ -28,13 +28,13 @@ protected:
 	          meta = (ClampMin = "0.01", ClampMax = "100.0"))
 	FVector Scale;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly,
-	          Category = "Fan|Properties")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,
+	          Category = "Fan|Rotation",
+	          meta = (ClampMin = "-10000.0", ClampMax = "10000.0"))
 	float RotationSpeed;
 
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	virtual void Tick(float DeltaTime) override;
-
 };

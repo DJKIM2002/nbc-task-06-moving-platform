@@ -35,8 +35,11 @@ protected:
 
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	virtual void Tick(float DeltaTime) override;
+	
+	// Setter 함수
+	FORCEINLINE void SetRotationSpeed(float NewSpeed) { RotationSpeed = NewSpeed; }
 
 private:
 	void RotateYaw(float DeltaTime);

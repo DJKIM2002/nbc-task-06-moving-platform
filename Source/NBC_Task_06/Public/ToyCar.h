@@ -11,16 +11,17 @@ class NBC_TASK_06_API AToyCar : public AActor
 {
 	GENERATED_BODY()
 	
-public:
+public:	
 	AToyCar();
 
 protected:
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly,
-                Category = "ToyCar|Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,
+	          Category = "ToyCar|Components")
 	USceneComponent* SceneRoot;
-    UPROPERTY(EditAnywhere, BlueprintReadWrite,
-                Category = "ToyCar|Components")
-    UStaticMeshComponent* StaticMeshComp;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,
+	          Category = "ToyCar|Components")
+	UStaticMeshComponent* StaticMeshComp;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,
 	          Category = "ToyCar|Transform",
@@ -28,25 +29,28 @@ protected:
 	FVector Scale;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,
-	          Category = "ToyCar|Movement",
-	          meta = (ClampMin = "-100000.0", ClampMax = "100000.0"))
-	float StartLocationX;
+                Category = "ToyCar|Movement",
+                meta = (ClampMin = "-100000.0", ClampMax = "100000.0"))
+    float StartLocationX;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite,
-	          Category = "ToyCar|Movement",
-	          meta = (ClampMin = "-100000.0", ClampMax = "100000.0"))
-	float EndLocationX;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite,
+                Category = "ToyCar|Movement",
+                meta = (ClampMin = "-100000.0", ClampMax = "100000.0"))
+    float EndLocationX;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite,
-	          Category = "ToyCar|Movement")
-	float MoveSpeed;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite,
+                Category = "ToyCar|Movement")
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,
-	          Category = "ToyCar|Movement")
-	bool bMovingToEnd;
+    float MoveSpeed;
 
-	void BeginPlay() override;
-    void Tick(float DeltaTime) override;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly,
+                Category = "ToyCar|Movement")
+    bool bMovingToEnd;
+
+	virtual void BeginPlay() override;
+
+public:
+	virtual void Tick(float DeltaTime) override;
 
 private:
 	FVector StartLocation;

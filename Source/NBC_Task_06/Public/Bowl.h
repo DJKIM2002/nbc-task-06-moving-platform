@@ -76,4 +76,9 @@ private:
 	void RotateYaw(float DeltaTime);
 	void SetNewRandomTarget();
 	void MoveTowardsTarget(float DeltaTime);
+
+public:
+	// Setter 함수들
+	FORCEINLINE void SetRotationSpeed(float NewSpeed) { RotationSpeed = NewSpeed; }
+	FORCEINLINE void SetMoveSpeed(float NewSpeed) { MoveSpeed = NewSpeed; }
 };
