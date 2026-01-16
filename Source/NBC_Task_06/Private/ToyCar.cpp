@@ -15,6 +15,7 @@ AToyCar::AToyCar()
 
   PrimaryActorTick.bCanEverTick = true;
   
+  Scale = FVector(1.0f, 1.0f, 1.0f);
   StartLocationX = 0.0f;
   EndLocationX = 1000.0f;
   MoveSpeed = 200.0f;
@@ -24,6 +25,8 @@ AToyCar::AToyCar()
 void AToyCar::BeginPlay() 
 {
   Super::BeginPlay();
+
+  SetActorScale3D(Scale);
 
   FVector ActorLocation = GetActorLocation();
   

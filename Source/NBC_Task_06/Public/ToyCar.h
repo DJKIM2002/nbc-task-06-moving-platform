@@ -11,8 +11,7 @@ class NBC_TASK_06_API AToyCar : public AActor
 {
 	GENERATED_BODY()
 	
-public:	
-	// Sets default values for this actor's properties
+public:
 	AToyCar();
 
 protected:
@@ -22,6 +21,11 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadWrite,
                 Category = "ToyCar|Components")
     UStaticMeshComponent* StaticMeshComp;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,
+	          Category = "ToyCar|Transform",
+	          meta = (ClampMin = "0.01", ClampMax = "100.0"))
+	FVector Scale;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,
 	          Category = "ToyCar|Movement",

@@ -4,32 +4,33 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Fan.generated.h"
+#include "Couch.generated.h"
 
 UCLASS()
-class NBC_TASK_06_API AFan : public AActor
+class NBC_TASK_06_API ACouch : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
-	AFan();
+	ACouch();
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly,
-	          Category = "Fan|Components")
+	          Category = "Couch|Components")
 	USceneComponent* SceneRoot;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,
-	          Category = "Fan|Components")
+	          Category = "Couch|Components")
 	UStaticMeshComponent* StaticMeshComp;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite,
-	          Category = "Fan|Transform",
+	          Category = "Couch|Transform",
 	          meta = (ClampMin = "0.01", ClampMax = "100.0"))
 	FVector Scale;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly,
-	          Category = "Fan|Properties")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,
+	          Category = "Couch|Rotation",
+	          meta = (ClampMin = "-1000.0", ClampMax = "1000.0"))
 	float RotationSpeed;
 
 	virtual void BeginPlay() override;
@@ -37,4 +38,6 @@ protected:
 public:	
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	void RotateYaw(float DeltaTime);
 };
