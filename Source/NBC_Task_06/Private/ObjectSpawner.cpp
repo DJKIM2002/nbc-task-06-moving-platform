@@ -54,13 +54,16 @@ void AObjectSpawner::SpawnMyObject()
 	SpawnLocation.Y += FMath::RandRange(-SpawnRangeY, SpawnRangeY);
 	SpawnLocation.Z += FMath::RandRange(MinSpawnHeight, MaxSpawnHeight);
 	
-	// 랜덤 회전
+	// 랜덤 회전 (0, 90, 180, 270도만 사용)
 	FRotator SpawnRotation = FRotator::ZeroRotator;
 	if (bRandomizeRotation)
 	{
-		SpawnRotation.Pitch = FMath::RandRange(0.0f, 360.0f);
-		SpawnRotation.Yaw = FMath::RandRange(0.0f, 360.0f);
-		SpawnRotation.Roll = FMath::RandRange(0.0f, 360.0f);
+		// 0, 90, 180, 270 중 하나를 랜덤으로 선택
+		TArray<float> RotationValues = {0.0f, 90.0f, 180.0f, 270.0f};
+		
+		SpawnRotation.Pitch = RotationValues[FMath::RandRange(0, 3)];
+		SpawnRotation.Yaw = RotationValues[FMath::RandRange(0, 3)];
+		SpawnRotation.Roll = RotationValues[FMath::RandRange(0, 3)];
 	}
 
 	// 액터 스폰

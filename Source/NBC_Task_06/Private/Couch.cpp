@@ -13,6 +13,19 @@ ACouch::ACouch()
 	    CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMeshComp->SetupAttachment(SceneRoot);
 
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(
+        TEXT("/Game/Isometric-Interiors/Meshes/SM_Couch_2B.SM_Couch_2B"));
+    if (MeshAsset.Succeeded()) {
+        StaticMeshComp->SetStaticMesh(MeshAsset.Object);
+    }
+
+    static ConstructorHelpers::FObjectFinder<UMaterial> MaterialAsset(
+        TEXT("/Game/Isometric-Interiors/Materials/"
+                "M_Texture_Atlas.M_Texture_Atlas"));
+    if (MaterialAsset.Succeeded()) {
+        StaticMeshComp->SetMaterial(0, MaterialAsset.Object);
+    }
+
 	PrimaryActorTick.bCanEverTick = true;
 
 	Scale = FVector(1.0f, 1.0f, 1.0f);

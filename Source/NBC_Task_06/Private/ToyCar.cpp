@@ -13,6 +13,18 @@ AToyCar::AToyCar()
   StaticMeshComp->SetupAttachment(SceneRoot);
   StaticMeshComp->SetRelativeRotation(FRotator(0.0f, -90.0f, 0.0f));
 
+  static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(
+      TEXT("/Game/Furniture_Free/Meshes/SM_toy_001.SM_toy_001"));
+  if (MeshAsset.Succeeded()) {
+    StaticMeshComp->SetStaticMesh(MeshAsset.Object);
+  }
+
+  static ConstructorHelpers::FObjectFinder<UMaterial> MaterialAsset(
+      TEXT("/Game/Furniture_Free/Materials/M_Material.M_Material"));
+  if (MaterialAsset.Succeeded()) {
+    StaticMeshComp->SetMaterial(0, MaterialAsset.Object);
+  }
+
   PrimaryActorTick.bCanEverTick = true;
   
   Scale = FVector(1.0f, 1.0f, 1.0f);

@@ -13,6 +13,19 @@ ABowl::ABowl()
 	    CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMeshComp->SetupAttachment(SceneRoot);
 
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(
+        TEXT("/Game/Isometric-Interiors/Meshes/SM_Bowl.SM_Bowl"));
+    if (MeshAsset.Succeeded()) {
+        StaticMeshComp->SetStaticMesh(MeshAsset.Object);
+    }
+
+    static ConstructorHelpers::FObjectFinder<UMaterial> MaterialAsset(
+        TEXT("/Game/Isometric-Interiors/Materials/"
+                "M_Texture_Atlas.M_Texture_Atlas"));
+    if (MaterialAsset.Succeeded()) {
+        StaticMeshComp->SetMaterial(0, MaterialAsset.Object);
+    }
+
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
